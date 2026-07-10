@@ -1,6 +1,6 @@
 # Non-Invasive Tissue Layer Estimation
 
-Deep learning model for estimating tissue layer thicknesses from Electrical Impedance Tomography (EIT) boundary voltage measurements — no imaging, no radiation, no contact beyond surface electrodes.
+Deep learning model for estimating tissue layer thicknesses from Electrical Impedance Tomography (EIT). NO imaging, NO radiation, NO contact beyond surface electrodes.
 
 ![Predicted arm cross-section](assets/prediction_complex.png)
 
@@ -10,7 +10,7 @@ Deep learning model for estimating tissue layer thicknesses from Electrical Impe
 
 EIT works by injecting a small current (100 µA) through electrodes placed on the skin and measuring the resulting boundary voltages. Because different tissues (skin, fat, muscle, bone) have distinct electrical conductivities, the voltage pattern encodes information about the internal geometry.
 
-The standard approach to recovering that geometry (the *inverse problem*) is iterative reconstruction — slow, ill-posed, and sensitive to noise. This project takes a different approach: train a neural network to directly map the 416-dimensional voltage measurement vector to the 4 tissue thicknesses in one forward pass.
+This project takes a different approach: train a neural network to directly map the 416-dimensional voltage measurement vector to the 4 tissue thicknesses in one forward pass.
 
 **Result:** mean R² of 0.888 across all four tissues, sub-millimeter precision on skin (MAE 0.17 mm).
 
@@ -50,7 +50,7 @@ A 5-layer MLP trained in [Lux.jl](https://github.com/LuxDL/Lux.jl):
 
 ## Dataset
 
-10,000 FEM simulations of a 4-layer concentric arm cross-section (bone → muscle → fat → skin) with 16 surface electrodes. Layer thicknesses were sampled using **Latin Hypercube Sampling** to ensure uniform coverage of the anatomical parameter space.
+10,000 FEM simulations of a 4-layer concentric arm cross-section (bone, muscle, fat, skin) with 16 surface electrodes. Layer thicknesses were sampled using **Latin Hypercube Sampling** to ensure uniform coverage of the anatomical parameter space.
 
 ![LHS vs random sampling](assets/sampling_comparison.png)
 
@@ -94,7 +94,7 @@ julia --project=. eit_predict.jl sample_data/sim1/simulation_1_voltage.csv \
 
 `--samples` controls MC-Dropout passes. 50 is faster, 200 is more stable. Default is 200.
 
-> **Note:** Trained checkpoints are not included in this repo due to file size. Train your own using `eit_trainer_cpu_f.jl` with a full dataset, or contact me if you need the weights.
+> **Note:** Trained checkpoints are not included in this repo due to file size. Train your own using `eit_trainer_cpu_f.jl` with a full dataset.
 
 ---
 
