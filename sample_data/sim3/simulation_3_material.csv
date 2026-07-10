@@ -1,0 +1,5 @@
+element_id,sigma,epsilon
+Bone,0.02,150.0
+Fat,0.0435,47.9
+Muscle,0.516,1867.994
+Skin,0.01375,1080.083

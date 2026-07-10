@@ -1,0 +1,2 @@
+number_of_electrodes,thickness_skin,thickness_fat,thickness_bone,thickness_muscle,cond_muscle,cond_bone,cond_fat,cond_skin,perm_muscle,perm_bone,perm_fat,perm_skin
+16,0.002470935635631853,0.013277952552408705,0.01873518907356513,0.042071575800794805,0.516,0.02,0.0435,0.01375,1867.994,150.0,47.9,1080.083
